@@ -1,6 +1,6 @@
 const getRandomInt = (startRange, endRange) => {
   if (startRange<0 && endRange<0) {
-    return 'Неверные данные';
+    return -1;
   }
   if(startRange>endRange){[startRange, endRange] = [endRange, startRange];}
   if (startRange<0) {
@@ -12,7 +12,7 @@ const getRandomInt = (startRange, endRange) => {
   startRange = Math.ceil(startRange);
   endRange = Math.floor(endRange);
   if (startRange > endRange){
-    return 'Диапазон не содержит целочисленные значения';}
+    return -1;}
   else {
     return Math.floor(Math.random() * (endRange - startRange +1))+ startRange;
   }
@@ -20,7 +20,7 @@ const getRandomInt = (startRange, endRange) => {
 
 const getRandomArbitrary = (beginRange, endRange, decimalPlaces) => {
   if (beginRange<0 && endRange<0){
-    return 'Неверные данные';
+    return -1;
   }
   if (beginRange<0) {
     beginRange = 0;
@@ -36,4 +36,4 @@ const getRandomArbitrary = (beginRange, endRange, decimalPlaces) => {
   return parseFloat(arbitrary.toFixed(decimalPlaces));
 };
 getRandomInt(2,7);
-console.log(getRandomArbitrary(2,3,3));
+getRandomArbitrary(2,3,3);
