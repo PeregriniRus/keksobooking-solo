@@ -2,14 +2,14 @@ const getRandomInt = (startRange, endRange) => {
   if (startRange < 0 && endRange < 0) {
     return -1;
   }
-  if (startRange > endRange) {
-    [startRange, endRange] = [endRange, startRange];
-  }
   if (startRange < 0) {
     startRange = 0;
   }
   if (endRange < 0) {
     endRange = 0;
+  }
+  if (startRange > endRange) {
+    [startRange, endRange] = [endRange, startRange];
   }
   startRange = Math.ceil(startRange);
   endRange = Math.floor(endRange);
@@ -20,7 +20,7 @@ const getRandomInt = (startRange, endRange) => {
   }
 };
 
-const getRandomArbitrary = (beginRange, endRange, decimalPlaces) => {
+const getRandomArbitrary = (beginRange, endRange, decimalPlaces = 1) => {
   if (beginRange < 0 && endRange < 0) {
     return -1;
   }
@@ -33,10 +33,8 @@ const getRandomArbitrary = (beginRange, endRange, decimalPlaces) => {
   if (beginRange > endRange) {
     [beginRange, endRange] = [endRange, beginRange];
   }
-  const flag = Math.round(Math.random());
 
-  let arbitrary;
-  flag === 0 ? arbitrary = Math.random() * (endRange - beginRange) + beginRange : arbitrary = endRange - Math.random() * (endRange - beginRange);
+  const arbitrary = Math.random() * (endRange - beginRange) + beginRange;
   return arbitrary.toFixed(decimalPlaces);
 };
 getRandomInt(2, 7);
