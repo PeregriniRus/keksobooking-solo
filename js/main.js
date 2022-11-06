@@ -116,14 +116,16 @@ const getRandomOffer = (index) => {
   };
 };
 
-const getRandomOffers = (length) => {
-  const createArrayIndex = createRandomIndexFromRangeGenerator(1, length);
-  const array = [];
-  for (let index = 0; index < length; index++) {
-    array.push(getRandomOffer(createArrayIndex()));
+const getArrayOfRandomNumbers = (length) => {
+  const array = Array.from({length: length}, (_item, i) => i + 1);
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 };
+
+const getRandomOffers = (length) => Array.from(getArrayOfRandomNumbers(length), getRandomOffer);
 
 const OFFERS_COUNT = 10;
 
